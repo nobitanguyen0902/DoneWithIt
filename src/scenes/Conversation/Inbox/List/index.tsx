@@ -4,13 +4,13 @@ import { StyleSheet, Image, FlatList, View, Text } from "react-native";
 export const List = React.memo(() => {
     return <FlatList
         data={listData}
-        renderItem={(item) => <Item item={item} />}
+        renderItem={({ item }) => <Item item={item} />}
         keyExtractor={item => item.id}
-    >
-    </FlatList>
+    />
 })
 
 export const Item = React.memo((props: any) => {
+    const { item } = props;
 
     return <View style={styles.item}>
         <View style={styles.hrvFlex}>
@@ -28,7 +28,7 @@ export const Item = React.memo((props: any) => {
                 <View style={styles.boxInfo}>
                     <View style={styles.hrvFlex}>
                         <View style={styles.hrvFlexItemFull}>
-                            <Text style={styles.title}>Nôbita Nguyễn</Text>
+                            <Text style={styles.title}>{item.name}</Text>
                         </View>
                         <View style={styles.hrvFlexItem}>
                             <Text style={styles.date}>Dec 31,2021</Text>
@@ -104,22 +104,22 @@ const styles = StyleSheet.create({
 const listData = [
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba0',
-        title: 'First Item',
+        name: 'Nôbita Nguyễn',
     },
     {
         id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f639',
-        title: 'Second Item',
+        name: 'Nguyễn Thái Anh',
     },
     {
         id: '58694a0f-3da1-471f-bd96-145571e29d728',
-        title: 'Third Item',
+        name: 'Phạm Ngọc Minh Thanh',
     },
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba7',
-        title: 'First Item',
+        name: 'Phan Nguyễn Mạnh Huy',
     },
     {
         id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f636',
-        title: 'Second Item',
+        name: 'Nguyễn Phúc',
     }
 ];
