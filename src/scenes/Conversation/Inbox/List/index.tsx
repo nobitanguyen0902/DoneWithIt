@@ -1,5 +1,6 @@
 import * as React from "react";
 import { StyleSheet, Image, FlatList, View, Text } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
 export const List = React.memo(() => {
     return <FlatList
@@ -11,8 +12,9 @@ export const List = React.memo(() => {
 
 export const Item = React.memo((props: any) => {
     const { item } = props;
+    const navigation = useNavigation();
 
-    return <View style={styles.item}>
+    return <View style={styles.item} onTouchStart={() => navigation.navigate('Detail')}>
         <View style={styles.hrvFlex}>
             <View style={styles.hrvFlexItem}>
                 <View style={styles.boxImage}>
