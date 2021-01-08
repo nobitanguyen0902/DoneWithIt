@@ -1,9 +1,9 @@
 import * as React from "react";
+import { Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Inbox } from "./Inbox";
 
-export const Conversation = React.memo(() => {
+export const Settings = React.memo(() => {
     return <SafeAreaView>
-        <Inbox />
+        <Text>Settings</Text>
     </SafeAreaView>
 })
