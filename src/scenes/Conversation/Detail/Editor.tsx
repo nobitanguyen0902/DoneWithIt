@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View, Text, TextInput } from 'react-native';
 
 export const Editor = React.memo(() => {
     return <TextInput
+        placeholder="Aa"
         multiline
         numberOfLines={4}
         maxLength={40}
@@ -17,7 +18,11 @@ const styles = StyleSheet.create({
     },
     input: {
         backgroundColor: "#EEE",
-        height: 40,
-        borderRadius: 30
+        borderRadius: 30,
+        paddingTop: 8,
+        paddingBottom: 8,
+        paddingLeft: 16,
+        paddingRight: 16,
+        paddingStart: 16
     }
 })

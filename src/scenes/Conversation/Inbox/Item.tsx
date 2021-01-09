@@ -80,8 +80,7 @@ const styles = StyleSheet.create({
         paddingRight: 16
     },
     boxImage: {
-        flexBasis: 36,
-        borderRadius: 50,
+        borderRadius: 100,
         overflow: "hidden"
     },
     image: {
