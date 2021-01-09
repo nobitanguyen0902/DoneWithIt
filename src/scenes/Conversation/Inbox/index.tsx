@@ -1,72 +1,65 @@
 import * as React from "react";
-import { StyleSheet, View, TextInput } from "react-native";
-import { EvilIcons } from '@expo/vector-icons';
-import { List } from "./List";
+import { StyleSheet, View, FlatList } from "react-native";
+import { InputSearch } from "./InputSearch";
+import { Item } from "./Item";
 
 export const Inbox = React.memo(() => {
-    return <View>
-        <InputSearch />
-        <List />
-    </View>
-})
-
-export const InputSearch = React.memo(() => {
-    const [value, onChangeText] = React.useState('');
-
-    return <View style={styles.searchInputContainer}>
-        <View style={[styles.hrvFlex, styles.hrvFlexAlignItemCenter]}>
-            <View style={styles.hrvFlexItem}>
-                <EvilIcons name="search" size={24} color="black" />
-            </View>
-            <View style={styles.hrvFlexItemFull}>
-                <TextInput
-                    style={styles.searchInput}
-                    onChangeText={text => onChangeText(text)}
-                    value={value}
-                    placeholder={"Search"}
-                />
-            </View>
-        </View>
+    return <View style={styles.container}>
+        <FlatList
+            ListHeaderComponent={InputSearch}
+            data={listData}
+            renderItem={({ item }) => <Item item={item} />}
+            keyExtractor={item => item.id}
+        />
     </View>
 })
 
 const styles = StyleSheet.create({
     container: {
-
-    },
-    hrvFlex: {
-        flexDirection: "row",
-        marginTop: -8,
-        marginLeft: -8
-    },
-    hrvFlexItem: {
-        flexGrow: 0,
-        flexShrink: 0,
-        flexBasis: "auto",
-        marginTop: 8,
-        marginLeft: 8
-    },
-    hrvFlexItemFull: {
-        flexGrow: 1,
-        flexShrink: 1,
-        flexBasis: 0,
-        marginTop: 8,
-        marginLeft: 8
-    },
-    hrvFlexAlignItemCenter: {
-        alignItems: "center"
-    },
-    searchInputContainer: {
-        marginLeft: 16,
-        marginRight: 16,
-        marginTop: 8,
-        marginBottom: 8,
-        paddingLeft: 8,
-        paddingRight: 8,
-        borderRadius: 4,
-        backgroundColor: "#eee"
-    },
-    searchInput: {
-        height: 40
+        flex: 1,
+        backgroundColor: "#FFF"
     }
 })
+
+const listData = [
+    {
+        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba0',
+        name: 'Nôbita Nguyễn',
+        snippet: 'Xin chao'
+    },
+    {
+        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f639',
+        name: 'Nguyễn Thái Anh',
+        snippet: 'Xin chao'
+    },
+    {
+        id: '58694a0f-3da1-471f-bd96-145571e29d728',
+        name: 'Phạm Ngọc Minh Thanh',
+        snippet: 'Xin chao'
+    },
+    {
+        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba7',
+        name: 'Phan Nguyễn Mạnh Huy',
+        snippet: 'Xin chao'
+    },
+    {
+        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f636',
+        name: 'Nguyễn Phúc',
+        snippet: 'Xin chao'
+    },
+    {
+        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f6362',
+        name: 'Nguyễn Phúc',
+        snippet: 'Xin chao'
+    },
+    {
+        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f6363',
+        name: 'Nguyễn Phúc',
+        snippet: 'Xin chao'
+    },
+    {
+        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f6364',
+        name: 'Nguyễn Phúc',
+        snippet: 'Xin chao'
+    }
+];

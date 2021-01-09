@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 
 export const Conversation = React.memo(() => {
     return <Stack.Navigator>
-        <Stack.Screen name="Home" component={Inbox} />
+        <Stack.Screen name="Chats" component={Inbox} />
         <Stack.Screen name="Detail" component={Detail} />
     </Stack.Navigator>
 })

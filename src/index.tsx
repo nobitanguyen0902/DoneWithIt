@@ -1,4 +1,5 @@
 import * as React from "react";
+import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { Conversation } from './scenes/Conversation';
