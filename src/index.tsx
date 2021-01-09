@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View } from 'react-native';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { Conversation } from './scenes/Conversation';
@@ -11,16 +11,17 @@ export const Main = React.memo(() => {
     return <Tab.Navigator
         initialRouteName="Home"
         tabBarOptions={{
-            activeTintColor: '#000',
+            activeTintColor: '#000'
         }}
     >
         <Tab.Screen name="Home" component={Conversation}
-            options={{
+            options={({ route }) => ({
                 tabBarLabel: 'Home',
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name="chatbubble" size={size} color={color} />
-                )
-            }}
+                ),
+                tabBarVisible: getTabBarVisible(route)
+            })}
         />
         <Tab.Screen name="Settings" component={Settings}
             options={{
@@ -32,3 +33,18 @@ export const Main = React.memo(() => {
         />
     </Tab.Navigator>
 })
+
+const getTabBarVisible = (route: any) => {
+    // If the focused route is not found, we need to assume it's the initial screen
+    // This can happen during if there hasn't been any navigation inside the screen
+    // In our case, it's "Feed" as that's the first screen inside the navigator
+    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+
+    switch (routeName) {
+        case 'Home':
+        case 'Chats':
+            return true;
+        default:
+            return false;
+    }
+}

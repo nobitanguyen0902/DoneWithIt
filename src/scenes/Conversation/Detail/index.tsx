@@ -4,6 +4,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const Detail = React.memo(() => {
     return <SafeAreaView>
-        <Text>Detail</Text>
+        
     </SafeAreaView>
 })

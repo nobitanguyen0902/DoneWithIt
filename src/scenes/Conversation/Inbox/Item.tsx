@@ -6,8 +6,12 @@ export const Item = React.memo((props: any) => {
     const { item } = props;
     const navigation = useNavigation();
 
+    const onClickItem = () => {
+        navigation.navigate('Detail');
+    }
+
     return <TouchableHighlight
-        onPress={() => navigation.navigate('Detail')}
+        onPress={onClickItem}
         underlayColor="rgba(178,212,255,.5)"
     >
         <View style={styles.item}>
