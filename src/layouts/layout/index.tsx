@@ -1,15 +1,15 @@
 import * as React from "react";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Constants from 'expo-constants';
 
 export const Layout = React.memo((props) => {
-    return <SafeAreaView style={styles.container}>
-        <View>{props.children}</View>
-    </SafeAreaView>
+    return <View style={styles.container}>{props.children}</View>
 })
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: Constants.statusBarHeight
+        flex: 1,
+        paddingTop: Constants.statusBarHeight,
+        backgroundColor: '#FFF'
     }
 });

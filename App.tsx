@@ -1,23 +1,45 @@
-import React from 'react';
+import * as React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
-import { Main } from './src';
+import { AppContainer } from './src/navigators';
+import { DefaultTheme, configureFonts, Provider as PaperProvider } from 'react-native-paper';
+import { initFonts, fontConfig } from './src/theme/fonts';
+
+interface IAuthContextProps {
+    onSetAuthorize: Function
+}
+
+export const AuthContext = React.createContext({} as IAuthContextProps);
 
 const App = React.memo(() => {
-    const [isLoading, onSetLoading] = React.useState(false);
+    const [isAuthorize, onSetAuthorize] = React.useState(false);
+
     React.useEffect(() => {
-        checkAuthorize();
+        initFonts();
     }, [])
 
-    const checkAuthorize = () => {
-
+    var authContext = {
+        onSetAuthorize: onSetAuthorize
     }
 
-    return <SafeAreaProvider>
-        <NavigationContainer>
-            <Main />
-        </NavigationContainer>
-    </SafeAreaProvider>
+    const theme = {
+        ...DefaultTheme,
+        fonts: configureFonts(fontConfig),
+        colors: {
+            ...DefaultTheme.colors,
+            primary: '#2962ff'
+        }
+    }
+
+    return <PaperProvider theme={theme}>
+        <AuthContext.Provider value={authContext}>
+            <SafeAreaProvider>
+                <NavigationContainer>
+                    <AppContainer isAuthorize={isAuthorize} />
+                </NavigationContainer>
+            </SafeAreaProvider>
+        </AuthContext.Provider>
+    </PaperProvider>
 })
 
 export default App;

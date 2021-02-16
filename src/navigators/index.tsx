@@ -1,18 +1,14 @@
-import { CommonActions, StackActions } from '@react-navigation/native';
+import * as React from 'react';
+import { AuthNavigator } from './auth.navigator';
+import { Main } from '..';
 
-export const NavigationActions = {
-
-    // goBack: () => CommonActions.goBack(),
-
-    // setParams: ({ params }) => CommonActions.setParams(params),
-
-    // navigate: ({ route, params = {} }) => CommonActions.navigate({ name: route, params: params }),
-
-    // reset: ({ route, params = {} }) => CommonActions.reset({ name: route, params: params }),
-
-    // replace: ({ route, params = {} }) => StackActions.replace(route, params),
-
-    // pop: () => StackActions.pop(),
-
-    // push: ({ route, params = {} }) => StackActions.push(route, params)
+interface IAppContainerProps {
+    isAuthorize: boolean
 }
+
+export const AppContainer = (props: IAppContainerProps) => {
+    if (props.isAuthorize)
+        return <Main />
+
+    return <AuthNavigator />;
+};
