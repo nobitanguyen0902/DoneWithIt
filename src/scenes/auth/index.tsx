@@ -30,7 +30,7 @@ const Content = React.memo(() => {
             <View style={styles.formContainer}>
                 <Button contentStyle={styles.btnLogin} color='#FFF'
                     labelStyle={{ fontSize: 14 }}
-                    onPress={() => context.onSetAuthorize(true)}>Đăng nhập</Button>
+                    onPress={() => context.onSignInAsync()}>Đăng nhập</Button>
             </View>
             <View style={styles.bgContainer}>
                 <Image

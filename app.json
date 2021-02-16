@@ -1,5 +1,14 @@
 {
   "expo": {
+    "extra": {
+      "branch": "develop",
+      "versionCode": 1111,
+      "authority": "hara.vn",
+      "apiHost": "hara.vn",
+      "clientid": "25badea946cf4f5143f075b4b987b3e2",
+      "client_secret": "260e32b31d82b73f88551f6962e0d60196c74ac2cb0857e966def1a1a3ba0791",
+      "sentryDSN": "https://74807942eea34f3bb51d5febf4481e30@sentry.io/1476048"
+    },
     "name": "HaraSocial",
     "slug": "HaraSocial",
     "version": "1.0.0",
