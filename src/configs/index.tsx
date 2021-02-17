@@ -3,10 +3,11 @@ import Constants from 'expo-constants';
 
 let deviceId = Constants.deviceId;
 let deviceName = Constants.deviceName;
-
 let version = `${Constants.manifest.version}.${Constants.manifest.extra.versionCode}-${Constants.manifest.extra.branch}`;
 
-export const Configs = {
+const AuthStorageKey = '@harasocial:auth';
+
+const Configs = {
     timezone: "Asia/Ho_Chi_Minh",
     deviceid: deviceId,
     device_name: deviceName,
@@ -15,6 +16,8 @@ export const Configs = {
     apiHost: Constants.manifest.extra.apiHost,
     clientid: Constants.manifest.extra.clientid,
     secret: Constants.manifest.extra.client_secret,
+    apiSocial: `https://${Constants.manifest.extra.apiSocial}/api`,
+    apiEcom: `https://${Constants.manifest.extra.apiEcom}/api`,
     scopes: [
         'userinfo',
         'org',
@@ -29,3 +32,12 @@ export const Configs = {
         'hac_api.read_users'
     ]
 }
+
+const AuthConfig = {
+    issuer: `https://accounts.${Configs.authority}`,
+    clientId: Configs.clientid,
+    clientSecret: Configs.secret,
+    scopes: Configs.scopes,
+};
+
+export { Configs, AuthStorageKey, AuthConfig }

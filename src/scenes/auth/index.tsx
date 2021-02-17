@@ -2,8 +2,10 @@ import * as React from "react";
 import { Dimensions, StyleSheet, View, Image } from "react-native";
 import { Button } from "react-native-paper";
 import { createStackNavigator } from '@react-navigation/stack';
-import { AuthContext } from '../../../App';
+import { AuthStore } from '../../stores';
+import { AuthContext } from '../..';
 import { Layout } from '../../layouts/layout';
+
 const window = Dimensions.get('window');
 const LOGIN_BACKGROUND = require('../../assets/login_bg.png');
 const LOGIN_LOGO = require('../../assets/login_logo.png');
@@ -17,8 +19,6 @@ export const SignIn = React.memo(() => {
 })
 
 const Content = React.memo(() => {
-    const context = React.useContext(AuthContext);
-
     return <Layout>
         <View style={styles.container}>
             <View style={styles.logoContainer}>
@@ -30,7 +30,7 @@ const Content = React.memo(() => {
             <View style={styles.formContainer}>
                 <Button contentStyle={styles.btnLogin} color='#FFF'
                     labelStyle={{ fontSize: 14 }}
-                    onPress={() => context.onSignInAsync()}>Đăng nhập</Button>
+                    onPress={() => AuthStore.onSignIn()}>Đăng nhập</Button>
             </View>
             <View style={styles.bgContainer}>
                 <Image

@@ -1,50 +1,37 @@
-import * as React from "react";
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
-import { Conversation } from './scenes/Conversation';
-import { Settings } from './scenes/Settings';
+import * as React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import { AppContainer } from './navigators';
+import { DefaultTheme, configureFonts, Provider as PaperProvider } from 'react-native-paper';
+import { initFonts, fontConfig } from './theme/fonts';
 
-const Tab = createBottomTabNavigator();
+interface IAuthContextProps {
+    onSetAuthorize: Function
+}
 
-export const Main = React.memo(() => {
-    return <Tab.Navigator
-        initialRouteName="Home"
-        tabBarOptions={{
-            activeTintColor: '#000'
-        }}
-    >
-        <Tab.Screen name="Home" component={Conversation}
-            options={({ route }) => ({
-                tabBarLabel: 'Home',
-                tabBarIcon: ({ color, size }) => (
-                    <Ionicons name="chatbubble" size={size} color={color} />
-                ),
-                tabBarVisible: getTabBarVisible(route)
-            })}
-        />
-        <Tab.Screen name="Settings" component={Settings}
-            options={{
-                tabBarLabel: 'Settings',
-                tabBarIcon: ({ color, size }) => (
-                    <Ionicons name="people" size={size} color={color} />
-                )
-            }}
-        />
-    </Tab.Navigator>
+export const AuthContext = React.createContext({} as IAuthContextProps);
+
+const App = React.memo(() => {
+    React.useEffect(() => {
+        initFonts();
+    }, [])
+
+    const theme = {
+        ...DefaultTheme,
+        fonts: configureFonts(fontConfig),
+        colors: {
+            ...DefaultTheme.colors,
+            primary: '#2962ff'
+        }
+    }
+
+    return <PaperProvider theme={theme}>
+        <SafeAreaProvider>
+            <NavigationContainer>
+                <AppContainer />
+            </NavigationContainer>
+        </SafeAreaProvider>
+    </PaperProvider>
 })
 
-const getTabBarVisible = (route: any) => {
-    // If the focused route is not found, we need to assume it's the initial screen
-    // This can happen during if there hasn't been any navigation inside the screen
-    // In our case, it's "Feed" as that's the first screen inside the navigator
-    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
-
-    switch (routeName) {
-        case 'Home':
-        case 'Chats':
-            return true;
-        default:
-            return false;
-    }
-}
+export default App;

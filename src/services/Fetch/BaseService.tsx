@@ -1,3 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AuthStorageKey, Configs } from '../../configs';
+
 export enum ApiType {
     com_api = "com_api",
     loy_api = 'loy_api',
@@ -8,17 +11,19 @@ export enum ApiType {
 
 export const BaseService = {
     async api_call(method: string, apiId: string, path: string, body: any, errorSystem: React.ReactNode, showWait: boolean) {
-        let url = `/call/${apiId}${path}`;
-
+        let url = _getUrlApi(apiId) + path;
+        console.log(url)
         try {
+            const access_token = await _getAccessToken();
+            console.log(access_token)
             let rp = await fetch(url, {
                 method: method,
                 body: body ? JSON.stringify(body) : null,
-                credentials: 'include',
+                // credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    // Authorization: `Bearer ${access_token}`,
+                    Authorization: `Bearer ${access_token}`,
                 }
             });
             if (rp.status == 401 && apiId === ApiType.social_api) {
@@ -63,4 +68,28 @@ export const BaseService = {
     api_call_delete(apiId: string, path: string, errorSystem: React.ReactNode = null, showWait: boolean = false) {
         return this.api_call('DELETE', apiId, path, null, errorSystem, showWait);
     }
+}
+
+const _getAccessToken = async () => {
+    const userToken = await AsyncStorage.getItem(AuthStorageKey);
+    const jsonUserToken = JSON.parse(userToken);
+    return jsonUserToken?.auth?.access_token
+        ? jsonUserToken.auth.access_token
+        : '';
+};
+
+const _getUrlApi = (type: string) => {
+    let apiUrl = "";
+    switch (type) {
+        case ApiType.social_api:
+            apiUrl = Configs.apiSocial;
+            break;
+        case ApiType.com_api:
+            apiUrl = Configs.apiEcom;
+            break;
+        default:
+            break;
+    }
+
+    return apiUrl;
 }
