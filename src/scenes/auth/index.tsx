@@ -3,7 +3,6 @@ import { Dimensions, StyleSheet, View, Image } from "react-native";
 import { Button } from "react-native-paper";
 import { createStackNavigator } from '@react-navigation/stack';
 import { AuthStore } from '../../stores';
-import { AuthContext } from '../..';
 import { Layout } from '../../layouts/layout';
 
 const window = Dimensions.get('window');
