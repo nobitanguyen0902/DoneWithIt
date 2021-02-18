@@ -3,7 +3,7 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { PageStore } from './stores';
-import { Conversation } from './scenes/Conversation2345';
+import { Conversation } from './scenes/conversation';
 import { Settings } from './scenes/settings';
 
 const Tab = createBottomTabNavigator();
