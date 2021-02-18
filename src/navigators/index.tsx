@@ -4,11 +4,7 @@ import { AuthNavigator } from './auth.navigator';
 import { Main } from '../main';
 import { AuthStore } from '../stores';
 
-interface IAppContainerProps {
-
-}
-
-export const AppContainer = observer((props: IAppContainerProps) => {
+export const AppContainer = observer(() => {
     if (AuthStore.IsAuthorize)
         return <Main />
 
