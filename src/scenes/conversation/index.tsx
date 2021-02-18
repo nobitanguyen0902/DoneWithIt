@@ -6,7 +6,7 @@ import { TouchableHighlight } from "react-native-gesture-handler";
 import { MaterialIcons } from '@expo/vector-icons';
 import { Inbox } from "./inbox";
 import { Detail } from './Detail';
-import { Profile } from './Profile123';
+import { Profile } from './profile';
 
 const Stack = createStackNavigator();
 
