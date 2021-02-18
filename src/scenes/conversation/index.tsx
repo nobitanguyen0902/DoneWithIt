@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { MaterialIcons } from '@expo/vector-icons';
-import { Inbox } from "./Inbox";
+import { Inbox } from "./Inbox123";
 import { Detail } from './Detail';
 import { Profile } from './Profile';
 
