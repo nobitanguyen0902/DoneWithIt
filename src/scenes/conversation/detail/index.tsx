@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Message } from './Message2';
-import { Editor } from './Editor1';
+import { Message } from './message';
+import { Editor } from './editor';
 
 export const Detail = React.memo(() => {
     return <View style={styles.container}>
