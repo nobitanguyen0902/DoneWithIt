@@ -12,14 +12,13 @@ export enum ApiType {
 export const BaseService = {
     async api_call(method: string, apiId: string, path: string, body: any, errorSystem: React.ReactNode, showWait: boolean) {
         let url = _getUrlApi(apiId) + path;
-        console.log(url)
+        
         try {
             const access_token = await _getAccessToken();
-            console.log(access_token)
             let rp = await fetch(url, {
                 method: method,
                 body: body ? JSON.stringify(body) : null,
-                // credentials: 'include',
+                credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -86,6 +85,9 @@ const _getUrlApi = (type: string) => {
             break;
         case ApiType.com_api:
             apiUrl = Configs.apiEcom;
+            break;
+        case ApiType.loy_api:
+            apiUrl = Configs.apiLoyalty;
             break;
         default:
             break;

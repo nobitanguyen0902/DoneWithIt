@@ -18,6 +18,7 @@ const Configs = {
     secret: Constants.manifest.extra.client_secret,
     apiSocial: `https://${Constants.manifest.extra.apiSocial}/api`,
     apiEcom: `https://${Constants.manifest.extra.apiEcom}/api`,
+    apiLoyalty: `https://${Constants.manifest.extra.apiLoyalty}/api`,
     scopes: [
         'userinfo',
         'org',
@@ -27,7 +28,9 @@ const Configs = {
         'profile',
         'openid',
         'offline_access',
+        'social_api',
         'com_api',
+        'loy_api',
         'billing_api',
         'hac_api.read_users'
     ]

@@ -10,10 +10,7 @@ class PageStore {
     }
 
     onGetListPage = async () => {
-        console.log('Calling Api 2');
         var list = await PageRepository.getListPages(1);
-        console.log(list);
-        console.log('Called')
     }
 }
 

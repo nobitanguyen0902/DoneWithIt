@@ -1,5 +1,4 @@
-import { BaseService, ApiType } from '../services/Fetch/BaseService';
-// import { GetApiUrl } from '../services/Fetch';
+import { BaseService, ApiType } from '../services/Fetch/fetch';
 
 export const PageRepository = {
     getListPages: (channel_id) => {
@@ -9,5 +8,9 @@ export const PageRepository = {
     getFiles: () => {
         let path = `/settings/files?type=image&page=1&limit=10`;
         return BaseService.api_call_get(ApiType.com_api, path, '', true);
+    },
+    getInfoLoyalty: () => {
+        let path = `/v1/organizations/info`;
+        return BaseService.api_call_get(ApiType.loy_api, path, '', true);
     }
 }
