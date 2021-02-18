@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { PageStore } from './stores';
 import { Conversation } from './scenes/Conversation';
-import { Settings } from './scenes/settingsabc';
+import { Settings } from './scenes/settings';
 
 const Tab = createBottomTabNavigator();
 
