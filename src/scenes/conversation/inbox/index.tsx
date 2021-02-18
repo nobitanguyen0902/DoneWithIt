@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet, View, FlatList } from "react-native";
-import { InputSearch } from "./InputSearch123";
-import { Item } from "./Item123";
+import { InputSearch } from "./search";
+import { Item } from "./item";
 
 export const Inbox = React.memo(() => {
     return <View style={styles.container}>
