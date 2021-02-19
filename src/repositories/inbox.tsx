@@ -1,4 +1,4 @@
-import { BaseService, ApiType } from '../services/Fetch123/fetch';
+import { BaseService, ApiType } from '../services/fetch/fetch';
 
 export const InboxRepository = {
     
