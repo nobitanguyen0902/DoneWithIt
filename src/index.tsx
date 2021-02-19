@@ -5,6 +5,7 @@ import { AppContainer } from './navigators';
 import { DefaultTheme, configureFonts, Provider as PaperProvider } from 'react-native-paper';
 import { initFonts, fontConfig } from './theme/fonts';
 import { I18nextProvider } from 'react-i18next';
+import i18next from './services/languages';
 
 interface IAuthContextProps {
     onSetAuthorize: Function
