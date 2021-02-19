@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Dimensions, StyleSheet, View, Image } from "react-native";
+import { Dimensions, StyleSheet, View, Image, Text } from "react-native";
 import { Button } from "react-native-paper";
 import { createStackNavigator } from '@react-navigation/stack';
-import { AuthStore } from '../../stores';
+import { AuthStore, PageStore } from '../../stores';
 import { Layout } from '../../layouts/layout';
 
 const window = Dimensions.get('window');
@@ -18,6 +18,11 @@ export const SignIn = React.memo(() => {
 })
 
 const Content = React.memo(() => {
+
+    const onChangeLanguage = () => {
+        PageStore.onSetLanguage();
+    }
+
     return <Layout>
         <View style={styles.container}>
             <View style={styles.logoContainer}>
@@ -30,6 +35,12 @@ const Content = React.memo(() => {
                 <Button contentStyle={styles.btnLogin} color='#FFF'
                     labelStyle={{ fontSize: 14 }}
                     onPress={() => AuthStore.onSignIn()}>Đăng nhập</Button>
+            </View>
+            <View style={styles.formContainer}>
+                <Button contentStyle={styles.btnLogin} color='#FFF'
+                    labelStyle={{ fontSize: 14 }}
+                    onPress={onChangeLanguage}>Ngôn ngữ</Button>
+                <Text>{PageStore.translate("layout:language:english")}</Text>
             </View>
             <View style={styles.bgContainer}>
                 <Image
