@@ -1,4 +1,7 @@
 {
+    "authorize":{
+        "buttonlogin": "Login"
+    },
     "language": {
         "vietnam": "Tiếng Việt",
         "english": "English"

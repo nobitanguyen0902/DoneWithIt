@@ -34,14 +34,15 @@ const Content = React.memo(() => {
             <View style={styles.formContainer}>
                 <Button contentStyle={styles.btnLogin} color='#FFF'
                     labelStyle={{ fontSize: 14 }}
-                    onPress={() => AuthStore.onSignIn()}>Đăng nhập</Button>
+                    onPress={() => AuthStore.onSignIn()}>
+                    {PageStore.translate("layout:authorize:buttonlogin")}
+                </Button>
             </View>
-            <View style={styles.formContainer}>
+            {/* <View style={styles.formContainer}>
                 <Button contentStyle={styles.btnLogin} color='#FFF'
                     labelStyle={{ fontSize: 14 }}
                     onPress={onChangeLanguage}>Ngôn ngữ</Button>
-                <Text>{PageStore.translate("layout:language:english")}</Text>
-            </View>
+            </View> */}
             <View style={styles.bgContainer}>
                 <Image
                     style={{ width: window.width, height: window.height / 2 }}

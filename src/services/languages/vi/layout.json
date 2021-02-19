@@ -1,6 +1,9 @@
 {
+    "authorize": {
+        "buttonlogin": "Đăng nhập"
+    },
     "language": {
         "vietnam": "Tiếng Việt",
-        "english": "Tiếng Anh"
+        "english": "English"
     }
 }
