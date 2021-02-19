@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { AppContainer } from './navigators';
 import { DefaultTheme, configureFonts, Provider as PaperProvider } from 'react-native-paper';
 import { initFonts, fontConfig } from './theme/fonts';
+import { I18nextProvider } from 'react-i18next';
 
 interface IAuthContextProps {
     onSetAuthorize: Function
@@ -26,11 +27,13 @@ const App = React.memo(() => {
     }
 
     return <PaperProvider theme={theme}>
-        <SafeAreaProvider>
-            <NavigationContainer>
-                <AppContainer />
-            </NavigationContainer>
-        </SafeAreaProvider>
+        <I18nextProvider i18n={i18next}>
+            <SafeAreaProvider>
+                <NavigationContainer>
+                    <AppContainer />
+                </NavigationContainer>
+            </SafeAreaProvider>
+        </I18nextProvider>
     </PaperProvider>
 })
 

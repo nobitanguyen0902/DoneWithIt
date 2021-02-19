@@ -1,4 +1,4 @@
-import { BaseService, ApiType } from '../services/Fetch/fetch';
+import { BaseService, ApiType } from '../services/Fetch123/fetch';
 
 export const PageRepository = {
     getListPages: (channel_id: number) => {
