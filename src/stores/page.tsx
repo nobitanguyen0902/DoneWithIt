@@ -2,6 +2,7 @@ import * as React from 'react';
 import { observable, makeObservable } from 'mobx';
 import { Translation } from 'react-i18next';
 import i18next from '../services/languages';
+import { Configs } from '../configs';
 import { PageRepository } from '../repositories/page';
 
 class PageStore {
@@ -31,7 +32,10 @@ class PageStore {
 
     onGetListPage = async () => {
         var list = await PageRepository.getListPages(1);
-        console.log(list);
+    }
+
+    onGetAvatar = (channelId: number, pageId: string, participantId: string) => {
+        return `${Configs.apiSocial}/profile_avatar/participants/${participantId}/channels/${channelId}/pages/${pageId}`;
     }
 }
 

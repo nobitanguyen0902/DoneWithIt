@@ -28,13 +28,13 @@ const App = React.memo(() => {
     }
 
     return <PaperProvider theme={theme}>
-        <I18nextProvider i18n={i18next}>
+        {/* <I18nextProvider i18n={i18next}> */}
             <SafeAreaProvider>
                 <NavigationContainer>
                     <AppContainer />
                 </NavigationContainer>
             </SafeAreaProvider>
-        </I18nextProvider>
+        {/* </I18nextProvider> */}
     </PaperProvider>
 })
 

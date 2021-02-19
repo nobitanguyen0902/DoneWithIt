@@ -1,13 +1,19 @@
 import * as React from "react";
+import { observer } from 'mobx-react';
 import { StyleSheet, View, FlatList } from "react-native";
 import { InputSearch } from "./search";
 import { Item } from "./item";
+import { InboxStore } from "../../../stores";
 
-export const Inbox = React.memo(() => {
+export const Inbox = observer(() => {
+    React.useEffect(() => {
+        InboxStore.onGetListConversation();
+    },[])
+
     return <View style={styles.container}>
         <FlatList
             ListHeaderComponent={InputSearch}
-            data={listData}
+            data={InboxStore.listConversations}
             renderItem={({ item }) => <Item item={item} />}
             keyExtractor={item => item.id}
         />

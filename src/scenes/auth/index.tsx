@@ -19,9 +19,9 @@ export const SignIn = React.memo(() => {
 
 const Content = React.memo(() => {
 
-    const onChangeLanguage = () => {
-        PageStore.onSetLanguage();
-    }
+    // const onChangeLanguage = () => {
+    //     PageStore.onSetLanguage();
+    // }
 
     return <Layout>
         <View style={styles.container}>

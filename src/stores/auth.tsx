@@ -26,7 +26,6 @@ class AuthStore {
             const authState = await AppAuth.authAsync(_config);
 
             const userInfo = await this.getUserInfo(authState.accessToken);
-            console.log(userInfo)
             if (userInfo && userInfo.email && userInfo.sub) {
                 const infoLogin = {
                     deny: false,

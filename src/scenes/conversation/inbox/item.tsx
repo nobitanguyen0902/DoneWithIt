@@ -1,6 +1,7 @@
 import * as React from "react";
 import { StyleSheet, Image, View, Text, TouchableHighlight } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import { PageStore } from "../../../stores";
 
 export const Item = React.memo((props: any) => {
     const { item } = props;
@@ -9,6 +10,8 @@ export const Item = React.memo((props: any) => {
     const onClickItem = () => {
         navigation.navigate('Detail');
     }
+
+    console.log(PageStore.onGetAvatar(item.channelId, item.pageId, item.participantId))
 
     return <TouchableHighlight
         onPress={onClickItem}
@@ -21,7 +24,8 @@ export const Item = React.memo((props: any) => {
                         <Image
                             style={styles.image}
                             source={{
-                                uri: "https://scontent.fsgn5-5.fna.fbcdn.net/v/t1.0-1/p100x100/71074567_2633490643338562_124928332214042624_o.jpg?_nc_cat=100&ccb=2&_nc_sid=7206a8&_nc_ohc=FCNngMQwfWYAX-aFYRc&_nc_ht=scontent.fsgn5-5.fna&tp=6&oh=35e720e904b3bda2b4dc048fe330da93&oe=6018BE4F"
+                                // uri: "https://scontent.fsgn5-5.fna.fbcdn.net/v/t1.0-1/p100x100/71074567_2633490643338562_124928332214042624_o.jpg?_nc_cat=100&ccb=2&_nc_sid=7206a8&_nc_ohc=FCNngMQwfWYAX-aFYRc&_nc_ht=scontent.fsgn5-5.fna&tp=6&oh=35e720e904b3bda2b4dc048fe330da93&oe=6018BE4F"
+                                uri: PageStore.onGetAvatar(item.channelId, item.pageId, item.participantId)
                             }}
                         />
                     </View>
@@ -30,7 +34,7 @@ export const Item = React.memo((props: any) => {
                     <View style={styles.boxInfo}>
                         <View style={styles.hrvFlex}>
                             <View style={styles.hrvFlexItemFull}>
-                                <Text style={styles.title} numberOfLines={1}>{item.name}</Text>
+                                <Text style={styles.title} numberOfLines={1}>{item.participantId}</Text>
                             </View>
                             <View style={styles.hrvFlexItem}>
                                 <Text style={styles.date}>Dec 31,2021</Text>

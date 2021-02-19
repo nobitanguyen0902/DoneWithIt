@@ -10,8 +10,7 @@ const Tab = createBottomTabNavigator();
 
 export const Main = React.memo(() => {
     React.useEffect(() => {
-        console.log('Call Api')
-        PageStore.onGetListPage();
+        // PageStore.onGetListPage();
     }, [])
 
     return <Tab.Navigator
