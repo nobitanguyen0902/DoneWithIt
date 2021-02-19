@@ -6,6 +6,10 @@ class InboxStore {
 
         })
     }
+
+    onGetListConversation = () => {
+
+    }
 }
 
 export default new InboxStore();

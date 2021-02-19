@@ -1,4 +1,4 @@
-import { BaseService, ApiType } from '../services/fetch/fetch';
+import { BaseService, ApiType } from '../services/fetch';
 
 export const CustomerRepository = {
     

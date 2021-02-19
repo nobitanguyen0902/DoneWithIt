@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthStorageKey, Configs } from '../../configs';
+import { __isNullOrUndefined } from '../helper/utils';
 
 export enum ApiType {
     com_api = "com_api",
@@ -12,7 +13,7 @@ export enum ApiType {
 export const BaseService = {
     async api_call(method: string, apiId: string, path: string, body: any, errorSystem: React.ReactNode, showWait: boolean) {
         let url = _getUrlApi(apiId) + path;
-        
+
         try {
             const access_token = await _getAccessToken();
             let rp = await fetch(url, {
@@ -94,4 +95,24 @@ const _getUrlApi = (type: string) => {
     }
 
     return apiUrl;
+}
+
+export const _getApiUrl = (path: string, value: object): string => {
+    if (value) {
+        var param = _parseObjectToParam(value)
+        if (!__isNullOrUndefined(param))
+            path += `?${param}`
+    }
+    return path
+}
+
+export const _parseObjectToParam = (obj: Object) => {
+    let path = ''
+    Object.keys(obj).map(key => {
+        if ((obj[key] || obj[key] === 0) && obj[key] != null) {
+            path += '&' + key + '=' + encodeURIComponent(obj[key])
+        }
+    })
+    path = path.substring(1)
+    return path
 }
