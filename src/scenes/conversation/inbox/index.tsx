@@ -8,15 +8,17 @@ import { InboxStore } from "../../../stores";
 export const Inbox = observer(() => {
     React.useEffect(() => {
         InboxStore.onGetListConversation();
-    },[])
+    }, [])
 
     return <View style={styles.container}>
-        <FlatList
-            ListHeaderComponent={InputSearch}
-            data={InboxStore.listConversations}
-            renderItem={({ item }) => <Item item={item} />}
-            keyExtractor={item => item.id}
-        />
+        {InboxStore.listConversations && InboxStore.listConversations.length > 0
+            ? <FlatList
+                ListHeaderComponent={InputSearch}
+                data={InboxStore.listConversations}
+                renderItem={({ item }) => <Item item={item} />}
+                keyExtractor={item => item.id}
+            />
+            : null}
     </View>
 })
 

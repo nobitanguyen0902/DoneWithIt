@@ -4,8 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { AppContainer } from './navigators';
 import { DefaultTheme, configureFonts, Provider as PaperProvider } from 'react-native-paper';
 import { initFonts, fontConfig } from './theme/fonts';
-import { I18nextProvider } from 'react-i18next';
-import i18next from './services/languages';
+// import { I18nextProvider } from 'react-i18next';
+// import i18next from './services/languages';
+import { AuthStore } from './stores';
 
 interface IAuthContextProps {
     onSetAuthorize: Function
@@ -16,6 +17,7 @@ export const AuthContext = React.createContext({} as IAuthContextProps);
 const App = React.memo(() => {
     React.useEffect(() => {
         initFonts();
+        AuthStore.loadAuthInfo();
     }, [])
 
     const theme = {

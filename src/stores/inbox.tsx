@@ -10,8 +10,6 @@ class InboxStore {
     listConversations = [] as any;
 
     constructor() {
-        this.listConversations = [];
-        
         makeObservable(this, {
             listConversations: observable
         })
@@ -23,9 +21,8 @@ class InboxStore {
             social_id: "500725830264749"
         } as any;
 
-        var rsp = await InboxRepository.getListConversations(page, null, 0);
-        this.listConversations = rsp.data.listConversation;
-        console.log(this.listConversations)
+        // var rsp = await InboxRepository.getListConversations(page, null, 0);
+        // this.listConversations = rsp.data.listConversation;
     }
 }
 

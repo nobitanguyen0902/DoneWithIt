@@ -11,8 +11,6 @@ export const Item = React.memo((props: any) => {
         navigation.navigate('Detail');
     }
 
-    console.log(PageStore.onGetAvatar(item.channelId, item.pageId, item.participantId))
-
     return <TouchableHighlight
         onPress={onClickItem}
         underlayColor="rgba(178,212,255,.5)"

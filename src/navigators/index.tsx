@@ -5,7 +5,7 @@ import { Main } from '../main';
 import { AuthStore } from '../stores';
 
 export const AppContainer = observer(() => {
-    if (AuthStore.IsAuthorize)
+    if (AuthStore.isAuthorize)
         return <Main />
 
     return <AuthNavigator />;

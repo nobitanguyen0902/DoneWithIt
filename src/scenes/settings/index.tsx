@@ -1,6 +1,8 @@
 import * as React from "react";
-import { Text } from "react-native";
 import { createStackNavigator } from '@react-navigation/stack';
+import { View, Text } from "react-native";
+import { Button } from 'react-native-paper';
+import { AuthStore } from "../../stores";
 
 const Stack = createStackNavigator();
 
@@ -11,5 +13,10 @@ export const Settings = React.memo(() => {
 })
 
 const SettingsContent = React.memo(() => {
-    return <Text>Settings Detail</Text>
+    return <View>
+        <Text>Settings Detail</Text>
+        <Button onPress={AuthStore.onSignOut}>Logout</Button>
+    </View>
+
+
 })
