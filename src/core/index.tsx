@@ -12,7 +12,12 @@ Notifications.setNotificationHandler({
 });
 
 export default class Core {
-    static async registerNotification(userInfo) {
+    static async checkPermission() {
+        const { status } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+        return status !== 'granted' ? false : true;
+    }
+
+    static async registerNotification() {
         try {
             console.log('existingStatus call')
             const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
@@ -38,12 +43,14 @@ export default class Core {
                 );
                 return;
             }
-            console.log('finalStatus', finalStatus)
+
             if (finalStatus !== 'granted') {
                 alert('Failed to get push token for push notification!');
                 return;
             }
+            console.log('finalStatus', finalStatus)
             let token = await Notifications.getExpoPushTokenAsync();
+
             const body = {
                 device_id: Constants.deviceId,
                 token

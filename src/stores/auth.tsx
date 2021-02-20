@@ -64,6 +64,7 @@ class AuthStore {
     onSignOut = async () => {
         try {
             let infoAuthorize = this.infoAuthorize;
+            this.onRemovetNoitication();
             await AppAuth.revokeAsync(AuthConfig, {
                 token: infoAuthorize && infoAuthorize.auth ? infoAuthorize.auth.accessToken : "",
                 isClientIdProvided: true
@@ -148,9 +149,16 @@ class AuthStore {
         }
     }
 
+    onCheckPermission = () => {
+        Core.checkPermission();
+    }
+
     onSetNoitication = () => {
-        console.log('call notification');
-        Core.registerNotification(null);
+        Core.registerNotification();
+    }
+
+    onRemovetNoitication = () => {
+        Core.removeNotificationToken();
     }
 }
 
