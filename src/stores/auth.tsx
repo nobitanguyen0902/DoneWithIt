@@ -18,8 +18,10 @@ class AuthStore {
         let infoAuthorize = this.infoAuthorize;
         try {
             const authInfo = await this._getAuthInfo(infoAuthorize);
-            this.isAuthorize = true;
-            this.infoAuthorize = authInfo;
+            if (authInfo) {
+                this.isAuthorize = true;
+                this.infoAuthorize = authInfo;
+            }
         } catch {
             // Restoring token failed
         }
@@ -62,8 +64,8 @@ class AuthStore {
         try {
             let infoAuthorize = this.infoAuthorize;
             await AppAuth.revokeAsync(AuthConfig, {
-                token: infoAuthorize && infoAuthorize.auth ? infoAuthorize.auth.accessToken : null,
-                isClientIdProvided: true,
+                token: infoAuthorize && infoAuthorize.auth ? infoAuthorize.auth.accessToken : "",
+                isClientIdProvided: true
             })
 
             await this._clearAuthInfo();
