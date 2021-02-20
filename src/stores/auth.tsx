@@ -2,6 +2,7 @@ import { observable, makeObservable } from 'mobx';
 import * as AppAuth from 'expo-app-auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Configs, AuthConfig, AuthStorageKey } from '../configs';
+import Core from '../core';
 
 class AuthStore {
     isAuthorize = false;
@@ -145,6 +146,11 @@ class AuthStore {
         } catch (e) {
             return null;
         }
+    }
+
+    onSetNoitication = () => {
+        console.log('call notification');
+        Core.registerNotification(null);
     }
 }
 
