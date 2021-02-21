@@ -28,8 +28,13 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "facebookAppId": "1621755161178887",
+    "facebookDisplayName": "Haravan Funnel - QC",
+    "facebookScheme": "",
+    "facebookAutoInitEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "harasocial.expo.mobile"
     },
     "android": {
       "adaptiveIcon": {

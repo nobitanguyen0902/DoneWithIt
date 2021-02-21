@@ -3,6 +3,7 @@ import { observable, makeObservable } from 'mobx';
 import { Translation } from 'react-i18next';
 import i18next from '../services/languages';
 import { Configs } from '../configs';
+import { FacebookUserModel } from '../models/page';
 import { PageRepository } from '../repositories/page';
 
 class PageStore {
@@ -28,6 +29,14 @@ class PageStore {
             return <Translation>{(t, { i18n }) => <React.Fragment>{t(code)} {content}</React.Fragment>}</Translation>
 
         return <Translation>{(t, { i18n }) => t(code)}</Translation>
+    }
+
+    onSetAuthorizeFacebookUser = async (data: FacebookUserModel) => {
+        await PageRepository.setAuthorizeInfoFacebookUser(data);
+    }
+
+    onGetListPageFacebook = async () => {
+        return await PageRepository.getFacebookPages(1);
     }
 
     onGetListPage = async () => {

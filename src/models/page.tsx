@@ -1,3 +1,12 @@
+export interface FacebookUserModel {
+    name: string,
+    email: string,
+    phone: string,
+    channel: number,
+    token: string,
+    ex_social_id: string
+}
+
 export interface IPage {
     id?: string,
     channel_id: number,  //if( channel = 1) page_id call api = social_id, if(channel=2) page_id call API = instagram_account.id
