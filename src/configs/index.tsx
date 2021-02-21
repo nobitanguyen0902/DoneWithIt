@@ -13,6 +13,7 @@ const Configs = {
     device_name: deviceName,
     version: version,
     facebookAppId: Constants.manifest.facebookAppId,
+    facebookDisplayName: Constants.manifest.facebookDisplayName,
     authority: Constants.manifest.extra.authority,
     apiHost: Constants.manifest.extra.apiHost,
     clientid: Constants.manifest.extra.clientid,

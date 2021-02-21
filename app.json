@@ -30,11 +30,18 @@
     ],
     "facebookAppId": "1621755161178887",
     "facebookDisplayName": "Haravan Funnel - QC",
-    "facebookScheme": "",
-    "facebookAutoInitEnabled": true,
+    "facebookScheme": "fb1621755161178887",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "harasocial.expo.mobile"
+      "bundleIdentifier": "com.haravan.harafunnel",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Haravan would like access to your camera to scan barcode and add image product",
+        "NSPhotoLibraryAddUsageDescription": "Haravan would like access to your photo gallery to add image product",
+        "NSPhotoLibraryUsageDescription": "Haravan would like access to your photo gallery to add image product",
+        "facebookAppId": "1621755161178887",
+        "facebookDisplayName": "Haravan Funnel - QC",
+        "facebookScheme": "fb1621755161178887"
+      }
     },
     "android": {
       "adaptiveIcon": {

@@ -61,7 +61,8 @@ const SettingsContent = React.memo(() => {
     const onLoginFb = async () => {
         try {
             await Facebook.initializeAsync({
-                appId: Configs.facebookAppId
+                appId: Configs.facebookAppId,
+                appName: Configs.facebookDisplayName
             });
 
             var listPermissions = ['email', 'manage_pages', 'publish_pages', 'read_page_mailboxes', 'pages_messaging', 'pages_messaging_subscriptions', 'pages_messaging_phone_number', 'ads_management', 'business_management', 'instagram_basic', 'instagram_manage_comments', 'instagram_manage_insights', 'instagram_manage_messages']
@@ -69,27 +70,38 @@ const SettingsContent = React.memo(() => {
                 permissions: listPermissions
             });
 
-            if (result && result.type === 'success') {
-                // Get the user's name using Facebook's Graph API
-                var response = await fetch(`https://graph.facebook.com/me?fields=id,name,email&access_token=${result.token}`);
-                var resultjson = await response.json();
-                Alert.alert('Logged in!', `Hi ${resultjson.name}!,${resultjson.email}!,${resultjson.id}!,${result.token}!`);
-                onSetToken(result.token)
-                // var postData = {
-                //     channel: 1,
-                //     name: "",
-                //     email: "",
-                //     phone: "",
-                //     ex_social_id: "",
-                //     token: ""
-                // } as FacebookUserModel;
-                // await PageStore.onSetAuthorizeFacebookUser(postData);
-            } else {
-                // type === 'cancel'
-            }
+            // if (result && result.type === 'success') {
+            //     // Get the user's name using Facebook's Graph API
+            //     var response = await fetch(`https://graph.facebook.com/me?fields=id,name,email&access_token=${result.token}`);
+            //     var resultjson = await response.json();
+            //     Alert.alert('Logged in!', `Hi ${resultjson.name}!,${resultjson.email}!,${resultjson.id}!,${result.token}!`);
+            //     onSetToken(result.token)
+            //     // var postData = {
+            //     //     channel: 1,
+            //     //     name: "",
+            //     //     email: "",
+            //     //     phone: "",
+            //     //     ex_social_id: "",
+            //     //     token: ""
+            //     // } as FacebookUserModel;
+            //     // await PageStore.onSetAuthorizeFacebookUser(postData);
+            // } else {
+            //     // type === 'cancel'
+            // }
+
+            const auth = await Facebook.getAuthenticationCredentialAsync();
+            console.log(auth);
         } catch ({ message }) {
             alert(`Facebook Login Error: ${message}`);
         }
+    }
+
+    const onLogoutFb = async () => {
+        console.log('logout facebook')
+        await Facebook.logOutAsync();
+
+        const auth = await Facebook.getAuthenticationCredentialAsync();
+        console.log(auth);
     }
 
     const _handleAppStateChange = async (nextAppState) => {
@@ -127,6 +139,7 @@ const SettingsContent = React.memo(() => {
         <View>
             <Text>Action Login Facebook</Text>
             <Button onPress={onLoginFb}>Login Facebook</Button>
+            <Button onPress={onLogoutFb}>Logout Facebook</Button>
         </View>
         <View>
             <Text>Action Logout</Text>
